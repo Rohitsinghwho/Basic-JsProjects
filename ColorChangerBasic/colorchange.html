@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Color Changer</h2>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+</body>
+<script>
+    const start= document.querySelector('#start')
+    const stops= document.querySelector('#stop')
+    // how to add the colors element in the body using set time out
+    // let i = 0;
+    var timer;
+    // // setInterval works as a loop borher
+    // const colorChanger=()=>{
+    //     let hex= '0123456789ABCDEF'
+    //     let color= '#';
+    //     for (let j = 0; j < 6; j++) {
+    //         color+=hex[Math.floor(Math.random()*16)]
+    //     }
+    //     // console.log(color)/
+    //     return color;
+    // }
+    // // function changeColor() {
+        // console.log(i);
+        // document.body.style.backgroundColor = colors[i];
+        // i++;
+        // if (i == colors.length) i = 0;
+        // }
+        // document.body.style.backgroundColor= colorChanger();
+    // }
+    let hex= '0123456789ABCDEF'
+        start.addEventListener('click', () =>{
+            clearInterval(timer);
+            timer = setInterval(()=>{
+                let color= '#';
+                for (let j = 0; j < 6; j++) {
+                  color+=hex[Math.floor(Math.random()*16)]
+                  }   
+                  document.body.style.backgroundColor=color;
+            }, 1000);
+            })
+            stops.addEventListener('click', ()=>{
+                clearInterval(timer);
+                // console.log("clicke")
+                });
+    const el= document.createElement('h1');
+    el.textContent='Hello World!';
+    document.body.appendChild(el)
+                
+
+    
+    
+
+</script>
+</html>
