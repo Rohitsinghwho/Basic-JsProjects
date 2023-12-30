@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Github Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>Search Your Github Profile Here</h1>
+    <input
+      type="text"
+      id="UserInput"
+      style="margin-left: 70px; margin-top: 10px;"
+    /><br>
+    <button style="margin-left: 138px; margin-top:8px;margin-bottom: 20px;">Fetch</button>
+    <div class="card my-2" style="width: 18rem;margin-left: 30px;">
+      <img id="myImg" src="pexels-pixabay-45170.jpg" class="card-img-top" alt="Avatar" />
+      <div class="card-body">
+        <h5 class="card-title">BOT</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate saepe sunt quod.</p>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // To populate the data in Element;
+      let shouldDelete=false;
+      const Populate = (data) => {
+        const img = document.getElementById("myImg");
+        document.getElementById(
+          "myImg"
+        ).src = `${data.avatar_url}?${img.alt}:${data.avatar_url}`;
+        document.querySelector(".card-title").innerHTML = `${data.name}`;
+        const s = String(data.bio);
+        document.querySelector(".card-text").innerHTML = `${s.slice(0, 60)}...`;
+        if(shouldDelete===true){
+          const eleToRemove = document.querySelectorAll(".card-body p:nth-last-child(-n+2)");
+            // Remove the selected child nodes from card-body
+             eleToRemove.forEach(ele => ele.remove());
+            //  shouldDelete=false;
+
+        }
+        const newEle = document.createElement("p");
+        newEle.classList.add("card-text");
+        newEle.innerHTML=`Repo : ${data.public_repos}`;
+        document.querySelector(".card-body").append(newEle);
+        const newEle2 = document.createElement("p");
+        newEle2.classList.add("card-text");
+        newEle2.innerHTML=`Followers: ${data.followers}`;
+        // document.querySelector(".card-body").innerHTML='';
+        document.querySelector(".card-body").append(newEle2);
+        shouldDelete=true;
+        // the above two appended childs are duplicating when searching for another user how to fix it?
+        };
+        
+
+      
+      const button = document.querySelector("button");
+      const UserInput = document.getElementById("UserInput");
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (!UserInput.value) {
+          alert("Please enter a username!");
+          return;
+        }
+        const MyApi = `https://api.github.com/users/${UserInput.value}`;
+        //  Create a instance of this object that is a webapi
+        const xhl = new XMLHttpRequest();
+        // open a connection or configure the connection
+        xhl.open("GET", MyApi);
+
+        // send request to server and get response back
+        xhl.onload = () => {
+          const StatusCode = xhl.status;
+          if (StatusCode === 200) {
+            // parsed the json data in object by dafault it give us the string
+            let data = JSON.parse(xhl.responseText);
+            Populate(data);
+          }
+        };
+        xhl.onerror = function () {
+          console.error("An error occurred during the XMLHttpRequest.");
+        };
+        xhl.send();
+      });
+    </script>
+  </body>
+</html>
