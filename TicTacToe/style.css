@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: purple;
+    color: white;
+    font-size: 2vw;
+    font-family: 'Playpen Sans', cursive;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    margin-top:1vw;
+    width: 85vw;
+    height: 85vh;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(194, 123, 194);
+
+
+}
+.board{
+    display: grid;
+    grid-template-rows: (3,2vh);
+    grid-template-columns: repeat(3,8vw);
+    /* grid-gap: 10px; */
+    align-items: center;
+    border-radius: 10px;
+    /* justify-items: center; */
+    
+}
+.box{
+    width:8vw ;
+    height: 10vh;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box:hover{
+    background-color: rgb(130, 11, 130);
+}
+.turn{
+    /* font-family: sans-serif; */
+    color:rgb(248, 187, 197);
+    background-color: rgb(194, 123, 194);
+    
+}
+.imgbox img{
+    width: 0;
+    transition: width 1s ease-in-out;
+    background-color: rgb(194, 123, 194);
+
+    /* display: hidden; */
+}
+.imgbox{
+    background-color: rgb(194, 123, 194);
+}
+.GameInfo{
+    background-color:rgb(194, 123, 194);
+}
+
+#resetBtn{
+    font-size: 2.4vw;
+    background-color: rgb(239, 190, 199);
+    margin:2vh 0;
+    border: 2px solid black;
+    padding: 0.6vh 0.9vh;
+    cursor: pointer;
+    color: #2f2f2f;
+    border-radius: 10px;
+
+}
+#resetBtn:hover{
+    background-color:#2f2f2f;
+}
+.bt-0{
+    border-top: 0;
+}
+.bl-0{
+    border-left: 0;
+}
+.br-0{
+    border-right: 0;
+}
+.bb-0{
+    border-bottom: 0;
+}
