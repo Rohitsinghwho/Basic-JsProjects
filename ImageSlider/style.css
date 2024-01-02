@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&family=Poppins:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Playpen Sans', cursive;
+    font-family: 'Poppins', sans-serif;
+
+}
+.navBar{
+    border: 1px solid  yellow;
+    background-color: #2f2f2f;
+    height: 7vh;
+    width: 100%;
+    font-size: 1.4em;
+    color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.container{
+    /* border: 1px solid blue; */
+    margin: 20vh 8vw;
+    width: 80vw;
+    height: 60vh;
+    display: flex;
+}
+
+#image-slider{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px;
+    list-style: none;
+    overflow-y: 0;
+    overflow-x: auto;
+    overflow: hidden;
+}
+#image-slider li{
+    margin: 18px 18px;
+    padding: 4px 4px;
+    /* border: 4px solid blue; */
+}
+.Images img{
+    height: 50vh;
+    width: 25vw;
+    /* border: 1px solid black; */
+
+}
+.Images img:hover{
+    transform: scale(1.2);
+    transition: ease-in;
+    /* border-radius: 10px; */
+    /* box-shadow: 10px; */
+}
+.leftBtn{
+    /* border: 1px solid green; */
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 3em;
+    line-height: 5vh;
+    height: 10vh;
+    margin-top: 20vh;
+    margin-right: 2vw;
+    
+}
+.rightBtn{
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 3em;
+    line-height: 5vh;
+    height: 10vh;
+    margin-top: 20vh;
+    margin-left: 2vw;
+    /* color: black; */
+}
